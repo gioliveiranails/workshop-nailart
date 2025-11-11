@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkShop NailArt - Aprenda Técnicas Sofisticadas e Naturais</title>
+  <meta name="description" content="Desenvolva sua assinatura única com técnicas minimalistas de nail art que unem criatividade e exclusividade.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==================== CSS VARIABLES ==================== */
+    :root {
+      --bg: #fdf4e3;
+      --primary: #500000;
+      --accent: #e4b914;
+      --text-dark: #2d2d2d;
+      --text-light: #666;
+      --white: #ffffff;
+      --shadow: rgba(80, 0, 0, 0.1);
+      --shadow-hover: rgba(80, 0, 0, 0.2);
+    }
+
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ==================== UTILITY CLASSES ==================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+      opacity: 80;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 20px var(--shadow-hover);
+    }
+
+    .btn-accent {
+      background-color: var(--accent);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(228, 185, 20, 0.3);
+    }
+
+    .btn-accent:hover,
+    .btn-accent:focus {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(228, 185, 20, 0.5);
+    }
+
+    .btn:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ==================== HEADER & NAVIGATION ==================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(253, 244, 227, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--primary);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg) 0%, #f5e6c8 100%);
+    }
+
+    /* Added background image with low opacity */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fundo-XYR81ZBVqsX0yoxDkyI7OxonvYfowW.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.35 ;
+      z-index: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%23500000" opacity="0.1"/></svg>');
+      background-size: 50px 50px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    .hero .btn {
+      animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==================== COUNTDOWN TIMER ==================== */
+    .countdown-container {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 2rem;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .countdown-container.active {
+      display: block;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ==================== PROBLEM/SOLUTION SECTION ==================== */
+    .problem-solution {
+      background-color: var(--white);
+    }
+
+    .problem-solution h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 3rem;
+    }
+
+    .problem-solution-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    .problem-solution-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==================== MODULES SECTION ==================== */
+    .modules h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 3rem;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .module-card {
+      background-color: var(--white);
+      padding: 0; /* Changed padding to 0 */
+      border-radius: 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s ease;
+      overflow: hidden; /* Added to contain the image */
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px var(--shadow-hover);
+    }
+
+    /* Added image container for module cards */
+    .module-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .module-card-content {
+      padding: 2rem;
+    }
+
+    .module-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .module-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .module-card ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .module-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .module-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ==================== BONUS SECTION ==================== */
+    .bonus {
+      background-color: var(--white);
+    }
+
+    .bonus h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 3rem;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Changed bonus cards to wine background with yellow text and icons */
+    .bonus-card {
+      background: var(--primary);
+      padding: 2rem;
+      border-radius: 24px;
+      text-align: center;
+      color: var(--accent);
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .bonus-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px var(--shadow-hover);
+    }
+
+    /* Updated icon styling for bonus cards - yellow color */
+    .bonus-card-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      fill: var(--accent);
+    }
+
+    .bonus-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .bonus-card p {
+      color: var(--accent);
+      opacity: 0.9;
+    }
+
+    /* ==================== TESTIMONIALS SECTION ==================== */
+    /* Removed testimonials section styles */
+
+    /* ==================== PRICING SECTION ==================== */
+    .pricing {
+      background-color: var(--white);
+    }
+
+    .pricing h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-breakdown {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .pricing-items {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-items li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      color: var(--text-light);
+    }
+
+    .pricing-total {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-total .old-price {
+      text-decoration: line-through;
+      color: var(--text-light);
+    }
+
+    .pricing-promo {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background-color: var(--bg);
+      padding: 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px var(--shadow-hover);
+    }
+
+    .pricing-card.featured {
+      transform: scale(1.05);
+      border-color: var(--accent);
+      box-shadow: 0 8px 40px var(--shadow-hover);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.08);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent);
+      color: var(--primary);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .pricing-card h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .pricing-card .price-old {
+      font-size: 1.5rem;
+      text-decoration: line-through;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card .price-note {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .pricing-card li {
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-dark);
+    }
+
+    .pricing-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .pricing-card .no-sale {
+      background-color: var(--text-light);
+      color: var(--white);
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .copy-link-btn {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .copy-link-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* ==================== GUARANTEES ==================== */
+    .guarantees {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .guarantee-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.5rem;
+      background-color: var(--bg);
+      border-radius: 16px;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .guarantee-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    /* Added SVG icon styling for guarantees */
+    .guarantee-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--primary);
+    }
+
+    .guarantee-text {
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* ==================== FAQ SECTION ==================== */
+    .faq h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 3rem;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background-color: var(--white);
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem;
+      background-color: var(--white);
+      border: none;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background-color: var(--bg);
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .faq-answer.active {
+      max-height: 500px;
+      padding: 1.5rem;
+    }
+
+    /* ==================== INSTRUCTOR SECTION ==================== */
+    .instructor {
+      background-color: var(--white);
+    }
+
+    .instructor h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 3rem;
+    }
+
+    .instructor-content {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start; /* Changed alignment to flex-start */
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    /* Reduced instructor image size */
+    .instructor-image {
+      flex: 0 0 200px; /* Changed flex basis */
+      min-width: 200px; /* Changed min-width */
+    }
+
+    .instructor-image img {
+      width: 100%;
+      height: 200px; /* Changed height */
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .instructor-image-placeholder {
+      width: 100%;
+      height: 200px; /* Changed height */
+      background: linear-gradient(135deg, var(--primary) 0%, #6d0000 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 3rem; /* Changed font-size */
+      font-family: 'Playfair Display', serif;
+    }
+
+    .instructor-bio {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .instructor-bio h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .instructor-bio p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* ==================== RAFFLE SECTION ==================== */
+    .raffle {
+      background: linear-gradient(135deg, var(--accent) 0%, #d4a914 100%);
+      text-align: center;
+    }
+
+    .raffle h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .raffle p {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .raffle-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .raffle-form input {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .raffle-form input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(80, 0, 0, 0.1);
+    }
+
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--accent);
+      animation: confetti-fall 3s ease-out forwards;
+    }
+
+    @keyframes confetti-fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 3rem 0 1rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    /* Added icon styling for footer links */
+    .footer-link-icon {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      fill: currentColor;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ==================== STICKY CTA ==================== */
+    .sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* ==================== MODALS ==================== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      padding: 2.5rem;
+      border-radius: 24px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      animation: modalSlideIn 0.3s ease;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+    }
+
+    .modal h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .modal p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-form input {
+      padding: 1rem;
+      border: 2px solid var(--bg);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-form input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 4px 20px var(--shadow);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      .instructor-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sticky-cta {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .sticky-cta .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ==================== ACCESSIBILITY ==================== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    *:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    button:focus,
+    a:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <nav>
+      <!-- Replaced text logo with image logo -->
+      <a href="#" class="logo" style="display: flex; align-items: center;">
+        <img src="logo curso (3).png" alt="WorkShop NailArt" style="height: 85px; width: auto;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#bonus">Bônus</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#instrutora">Instrutora</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu de navegação">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Aprenda a criar Nail Arts sofisticadas e naturais</h1>
+        <p>Desenvolva sua assinatura única com técnicas minimalistas que unem criatividade e exclusividade.</p>
+        <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin-top: 1rem;">Através da NAIL ART SOFISTICADA</p>
+        <p style="font-size: 1rem; margin-bottom: 2rem;">Descubra como criar decorações atraentes, delicadas e elegantes, mantendo a leveza que transforma o simples em exclusivo.</p>
+        <a href="#precos" class="btn btn-primary">Quero Garantir Minha Vaga</a>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown-container" id="countdownContainer">
+          <p><strong>Oferta termina em:</strong></p>
+          <div class="countdown" id="countdown">
+            <div class="countdown-item">
+              <span class="countdown-value" id="days">00</span>
+              <span class="countdown-label">Dias</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="hours">00</span>
+              <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="minutes">00</span>
+              <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="seconds">00</span>
+              <span class="countdown-label">Segundos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROBLEM/SOLUTION SECTION ==================== -->
+  <section class="section problem-solution">
+    <div class="container">
+      <h2>Chega de decoração sem graça</h2>
+      <div class="problem-solution-content">
+        <p>Durante meses, eu deixei de criar decorações elaboradas por falta de conhecimento e confiança em mim mesma. Eu acreditava que unhas artísticas poderiam comprometer a naturalidade que tanto tempo e dedicação me fizeram conquistar — e para mim, isso era inegociável.</p>
+        <p>Foi então que decidi estudar, treinar e sair da minha zona de conforto. Cada prática me trouxe confiança e me permitiu dar vida a Nail Arts sofisticadas sem perder a leveza e naturalidade do meu trabalho.</p>
+        <p><strong>E você, já deixou de impressionar uma cliente porque não sabia como criar a Nail Art perfeita?</strong></p>
+        <p style="font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-top: 1.5rem;">Chega de decoração sem graça, desalinhada ou sem criatividade. É hora de criar unhas que encantam, impressionam e fazem você se destacar de verdade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODULES SECTION ==================== -->
+  <section class="section modules" id="modulos">
+    <div class="container">
+      <h2>No NAIL ART SOFISTICADA você terá acesso:</h2>
+      <div style="max-width: 800px; margin: 0 auto 3rem; text-align: center;">
+        <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+          <li style="padding: 0.5rem 0; color: var(--text-dark); font-size: 1.1rem;">✓ Gravação das aulas por 1 ano</li>
+          <li style="padding: 0.5rem 0; color: var(--text-dark); font-size: 1.1rem;">✓ Suporte individual pelo WhatsApp</li>
+          <li style="padding: 0.5rem 0; color: var(--text-dark); font-size: 1.1rem;">✓ Análise de decorações para melhorias</li>
+          <li style="padding: 0.5rem 0; color: var(--text-dark); font-size: 1.1rem;">✓ Atualizações de conteúdos durante o tempo de acesso</li>
+        </ul>
+        <p style="font-size: 1.2rem; color: var(--primary); font-weight: 600; margin-bottom: 2rem;">E a metodologia dividida por níveis para melhor entendimento:</p>
+      </div>
+      <div class="modules-grid">
+        <!-- Added real nail art images to module cards -->
+        <div class="module-card">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/francesinha-iniciante-LRWA7yLaAxUGyYoj8T6xtx9qNdapyn.jpeg" alt="Nível Iniciante" class="module-card-image">
+          <div class="module-card-content">
+            <h3><span class="module-icon">1</span> Nível Iniciante</h3>
+            <ul>
+              <li>Francesinha</li>
+              <li>Traços finos</li>
+              <li>Esmaltação em gel</li>
+              <li>Degradê com glitter</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/intermediaria-Ye4v9IWgUSF367adl6eWRdyP2xs7gc.jpeg" alt="Nível Intermediário" class="module-card-image">
+          <div class="module-card-content">
+            <h3><span class="module-icon">2</span> Nível Intermediário</h3>
+            <ul>
+              <li>Baby boomer</li>
+              <li>Madre pérola com folha de ouro</li>
+              <li>Flor seca</li>
+              <li>Marmorizado</li>
+              <li>Borda camuflada</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-card">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avancada-h3McP0ETq8HnwKcpvVRfuEhKzuYUME.jpeg" alt="Nível Avançado" class="module-card-image">
+          <div class="module-card-content">
+            <h3><span class="module-icon">3</span> Nível Avançado</h3>
+            <ul>
+              <li>Efeito aura nails e cromado</li>
+              <li>Alto relevo e 3D</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BONUS SECTION ==================== -->
+  <section class="section bonus" id="bonus">
+    <div class="container">
+      <h2>Bônus Exclusivos</h2>
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <!-- Replaced emoji with SVG icon -->
+          <svg class="bonus-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <h3>Nail Art de Natal</h3>
+          <p>Designs especiais para as festas de fim de ano</p>
+        </div>
+        <div class="bonus-card">
+          <!-- Replaced emoji with SVG icon -->
+          <svg class="bonus-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z"/>
+          </svg>
+          <h3>Link dos Materiais</h3>
+          <p>Lista completa com links diretos dos materiais utilizados nas aulas</p>
+        </div>
+        <div class="bonus-card">
+          <!-- Replaced emoji with SVG icon -->
+          <svg class="bonus-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z"/>
+          </svg>
+          <h3>Como Tirar Fotos</h3>
+          <p>Aprenda a fotografar e editar suas nail arts como uma profissional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS SECTION ==================== -->
+  <!-- Removed testimonials section -->
+
+  <!-- ==================== PRICING SECTION ==================== -->
+  <section class="section pricing" id="precos">
+    <div class="container">
+      <h2>Investimento</h2>
+      
+      <div class="pricing-breakdown">
+        <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">BÔNUS EXCLUSIVOS</h3>
+        <div style="background-color: var(--white); padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px var(--shadow); margin-bottom: 2rem;">
+          <ul class="pricing-items" style="text-align: left; max-width: 100%;">
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--bg); font-size: 1rem;">
+              <span style="flex: 1;">Decorações do iniciante ao avançado: francesinha, traços finos, esmaltação em gel, degradê com glitter, baby boomer, madre pérola com folha de ouro, flor seca, marmorizado, borda camuflada, efeito aura nails e cromado, alto relevo e 3D</span>
+              <span style="font-weight: 700; color: var(--primary); white-space: nowrap; margin-left: 1rem;">R$ 497</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--bg); font-size: 1rem;">
+              <span style="flex: 1;">Suporte e análise personalizada e individual</span>
+              <span style="font-weight: 700; color: var(--primary); white-space: nowrap; margin-left: 1rem;">Inestimável</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--bg); font-size: 1rem;">
+              <span style="flex: 1;">Como tirar e editar as suas fotos</span>
+              <span style="font-weight: 700; color: var(--primary); white-space: nowrap; margin-left: 1rem;">R$ 97</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; font-size: 1rem;">
+              <span style="flex: 1;">Kit de decoração com os materiais utilizados nas aulas</span>
+              <span style="font-weight: 700; color: var(--primary); white-space: nowrap; margin-left: 1rem;">R$ 200</span>
+            </li>
+          </ul>
+          <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem; font-style: italic; text-align: center;">
+            * Sorteio do kit para as alunas que se inscreverem até o dia que se encerra as vendas
+          </p>
+        </div>
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">De: <span class="old-price" style="font-size: 1.5rem;">R$ 794</span></p>
+          <p class="pricing-promo" style="font-size: 3.5rem; margin: 1rem 0;">R$ 297</p>
+        </div>
+      </div>
+
+      <div class="pricing-cards">
+        <!-- Plano Padrão -->
+        <div class="pricing-card">
+          <h3>Plano Padrão</h3>
+          <p class="price-old">De: R$ 794</p>
+          <p class="price">R$ 297</p>
+          <p class="price-note">Pagamento único</p>
+          <ul>
+            <li>Acesso completo aos 3 níveis</li>
+            <li>Todos os bônus inclusos</li>
+            <li>Certificado de conclusão</li>
+            <li>Acesso por 1 ano</li>
+            <li>Suporte individual pelo WhatsApp</li>
+            <li>Análise de decorações</li>
+          </ul>
+          <button class="btn btn-primary" onclick="openPurchaseModal('Plano Padrão', 297)">Comprar R$ 297</button>
+        </div>
+
+        <!-- Plano VIP (Featured) -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Grupo VIP</div>
+          <h3>Plano VIP</h3>
+          <p class="price">R$ 197</p>
+          <p class="price-note">Para quem estiver no grupo VIP</p>
+          <ul>
+            <li>Acesso completo aos 3 níveis</li>
+            <li>Todos os bônus inclusos</li>
+            <li>Certificado de conclusão</li>
+            <li>Acesso por 1 ano</li>
+            <li>Suporte individual pelo WhatsApp</li>
+            <li>Análise de decorações</li>
+            <li><strong>Preço exclusivo do grupo!</strong></li>
+          </ul>
+          <button class="btn btn-accent" onclick="openWhatsAppModal()">Entrar no Grupo VIP</button>
+          <button class="copy-link-btn" onclick="copyGroupLink()">Copiar link do grupo</button>
+        </div>
+
+        <!-- Plano Aluna -->
+        <div class="pricing-card">
+          <h3>Plano Aluna</h3>
+          <p class="price">R$ 97</p>
+          <p class="price-note">Para quem é aluna</p>
+          <ul>
+            <li>Acesso completo aos 3 níveis</li>
+            <li>Todos os bônus inclusos</li>
+            <li>Certificado de conclusão</li>
+            <li>Acesso por 1 ano</li>
+            <li>Suporte individual pelo WhatsApp</li>
+            <li>Análise de decorações</li>
+          </ul>
+          <div class="no-sale">Já é aluna? Acesso incluído</div>
+        </div>
+      </div>
+
+      <!-- Guarantees -->
+      <div class="guarantees">
+        <div class="guarantee-badge">
+          <!-- Replaced emoji with SVG icon -->
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z"/>
+            </svg>
+          </div>
+          <p class="guarantee-text">7 dias de<br>garantia</p>
+        </div>
+        <div class="guarantee-badge">
+          <!-- Replaced emoji with SVG icon -->
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z"/>
+            </svg>
+          </div>
+          <p class="guarantee-text">Acesso por<br>1 ano</p>
+        </div>
+        <div class="guarantee-badge">
+          <!-- Replaced emoji with SVG icon -->
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+            </svg>
+          </div>
+          <p class="guarantee-text">Certificado<br>incluído</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ SECTION ==================== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Por quanto tempo tenho acesso ao curso?</button>
+          <div class="faq-answer">
+            <p>Você terá acesso por 1 ano a todos os conteúdos e atualizações dentro desse período. A contagem inicia logo após o pagamento.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Como faço para acessar o produto?</button>
+          <div class="faq-answer">
+            <p>Será enviado um link no seu email onde conseguirá acessar a plataforma e assistir às aulas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Precisa de conhecimento básico em decorações para aprender?</button>
+          <div class="faq-answer">
+            <p>Não, as aulas são desenvolvidas para iniciantes e profissionais de todos os níveis de habilidade. Porém, é necessário conhecimento em esmaltação e aplicação em gel.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">É ensinado a fazer alongamento de unhas?</button>
+          <div class="faq-answer">
+            <p>Não! Somente decorações.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Tem certificado?</button>
+          <div class="faq-answer">
+            <p>Sim, será disponibilizado após a conclusão de todas as aulas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Tem garantia de quantos dias?</button>
+          <div class="faq-answer">
+            <p>Você tem 7 dias de garantia. Se decidir não se tornar uma nail artist dentro desse prazo, é só nos avisar que devolveremos 100% do seu dinheiro, sem burocracia.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Qual é o formato do Workshop NAIL ART SOFISTICADA?</button>
+          <div class="faq-answer">
+            <p>O Workshop é 100% online, com aulas gravadas disponíveis na plataforma Kiwify. Você pode assistir quando e onde quiser, no seu próprio ritmo!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSTRUCTOR SECTION ==================== -->
+  <section class="section instructor" id="instrutora">
+    <div class="container">
+      <h2>Quem será a sua Instrutora</h2>
+      <!-- Using the actual instructor image -->
+      <div class="instructor-content">
+        <div class="instructor-image">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/178630aa-0aa2-4952-b6e1-15cbefda13f7-VofRAVxc62ljtRPpqtyFL5iZLhg0pP.jpeg" alt="Giselly Oliveira">
+        </div>
+        <div class="instructor-bio">
+          <h3>Giselly Oliveira</h3>
+          <p>Apaixonada por moda e detalhes desde sempre, desenvolvi meu próprio método de nail art minimalista e sofisticada que se tornou minha assinatura.</p>
+          <p>Com anos de experiência criando designs únicos e naturais, agora compartilho minhas técnicas exclusivas para ajudar você a desenvolver seu próprio estilo autoral.</p>
+          <p>Minha missão é ensinar você a criar nail arts que as pessoas vão reconhecer como suas — elegantes, sofisticadas e cheias de personalidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RAFFLE SECTION ==================== -->
+  <section class="section raffle">
+    <div class="container">
+      <!-- Updated raffle section to redirect to VIP group -->
+      <h2>Participe do Sorteio</h2>
+      <p>Entre no grupo VIP para participar do sorteio de um kit completo de nail art!</p>
+      <p style="font-size: 1rem; margin-top: 1rem; margin-bottom: 2rem;">No grupo VIP você terá acesso a todas as informações sobre o sorteio e condições especiais.</p>
+      <p style="font-size: 0.9rem; margin-top: -1rem;"><em>Sorteio válido para inscrições até a data de encerramento das vendas</em></p>
+      <a href="https://chat.whatsapp.com/LXutxxClkU63MTPlRY1Y2I" target="_blank" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Entrar no Grupo VIP</a>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>WorkShop NailArt</h3>
+          <p>Desenvolva sua assinatura única com técnicas minimalistas e sofisticadas.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Suporte</h3>
+          <!-- Replaced emojis with SVG icons -->
+          <a href="https://wa.me/5511999999999" target="_blank">
+            <svg class="footer-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a href="mailto:contato@workshopnailart.com">
+            <svg class="footer-link-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
+            </svg>
+            Email
+          </a>
+        </div>
+        <div class="footer-section">
+          <h3>Links Rápidos</h3>
+          <a href="#modulos">Módulos</a>
+          <a href="#precos">Preços</a>
+          <a href="#faq">FAQ</a>
+          <a href="#instrutora">Instrutora</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WorkShop NailArt. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== STICKY CTA ==================== -->
+  <div class="sticky-cta">
+    <a href="#precos" class="btn btn-primary">Quero me tornar Aluna!</a>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+  
+  <!-- WhatsApp Modal -->
+  <div class="modal" id="whatsappModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('whatsappModal')" aria-label="Fechar">&times;</button>
+      <h3>Entrar no Grupo VIP</h3>
+      <p>Clique no botão abaixo para entrar no grupo exclusivo do WhatsApp e garantir sua vaga!</p>
+      <a href="https://wa.me/5511999999999?text=Olá! Quero entrar no Grupo VIP do WorkShop NailArt" target="_blank" class="btn btn-accent" style="width: 100%;">Abrir WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Purchase Modal -->
+  <div class="modal" id="purchaseModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('purchaseModal')" aria-label="Fechar">&times;</button>
+      <h3 id="purchaseTitle">Finalizar Compra</h3>
+      <p id="purchaseDescription">Preencha seus dados para concluir a compra</p>
+      <form class="modal-form" id="purchaseForm">
+        <input type="text" placeholder="Seu nome completo" required id="purchaseName">
+        <input type="email" placeholder="Seu melhor e-mail" required id="purchaseEmail">
+        <button type="submit" class="btn btn-primary">Confirmar Compra</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirmationModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('confirmationModal')" aria-label="Fechar">&times;</button>
+      <!-- Replaced emoji with text -->
+      <h3>Compra Confirmada!</h3>
+      <p>Obrigada pela sua compra! Em breve você receberá um e-mail com as instruções de acesso.</p>
+      <button class="btn btn-primary" onclick="closeModal('confirmationModal')" style="width: 100%;">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Confetti Container -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // ==================== CONFIGURATION ====================
+    // PERSONALIZE AQUI:
+    const CONFIG = {
+      // Data de encerramento das vendas (formato: 'YYYY-MM-DDTHH:MM:SS')
+      // Deixe vazio ('') para não mostrar contagem regressiva
+      saleEndDate: '2025-01-31T23:59:59',
+      
+      // Número do WhatsApp (formato: 5511999999999)
+      whatsappNumber: '5511999999999',
+      
+      // Link do grupo VIP
+      vipGroupLink: 'https://chat.whatsapp.com/LXutxxClkU63MTPlRY1Y2I',
+      
+      // Link de pagamento do plano padrão
+      paymentLink: 'https://pay.kiwify.com.br/iGbZ15l'
+    };
+
+    // ==================== MOBILE MENU ====================
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // ==================== SMOOTH SCROLL ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // ==================== SCROLL REVEAL ====================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // ==================== COUNTDOWN TIMER ====================
+    function initCountdown() {
+      if (!CONFIG.saleEndDate) return;
+
+      const countdownContainer = document.getElementById('countdownContainer');
+      const endDate = new Date(CONFIG.saleEndDate).getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+
+        if (distance < 0) {
+          countdownContainer.style.display = 'none';
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+        countdownContainer.classList.add('active');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
+    initCountdown();
+
+    // ==================== FAQ ACCORDION ====================
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+
+        // Close all other FAQs
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+        });
+
+        // Toggle current FAQ
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('active');
+        }
+      });
+    });
+
+    // ==================== MODALS ====================
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openWhatsAppModal() {
+      window.open(CONFIG.vipGroupLink, '_blank');
+    }
+
+    function openPurchaseModal(planName, price) {
+      window.open(CONFIG.paymentLink, '_blank');
+    }
+
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    // ==================== PURCHASE FORM ====================
+    document.getElementById('purchaseForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('purchaseName').value;
+      const email = document.getElementById('purchaseEmail').value;
+
+      // Simulate purchase (in production, send to backend)
+      console.log('Purchase:', { name, email });
+
+      closeModal('purchaseModal');
+      openModal('confirmationModal');
+
+      // Reset form
+      document.getElementById('purchaseForm').reset();
+    });
+
+    // ==================== COPY GROUP LINK ====================
+    function copyGroupLink() {
+      const link = CONFIG.vipGroupLink;
+      navigator.clipboard.writeText(link).then(() => {
+        alert('Link copiado para a área de transferência!');
+      }).catch(() => {
+        alert('Não foi possível copiar o link. Por favor, copie manualmente: ' + link);
+      });
+    }
+
+    // ==================== RAFFLE ====================
+
+    // ==================== CONFETTI ANIMATION ====================
+    function createConfetti() {
+      const container = document.getElementById('confettiContainer');
+      const colors = ['#500000', '#e4b914', '#fdf4e3'];
+      
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        container.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    // ==================== PARALLAX EFFECT ====================
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // ==================== KEYBOARD ACCESSIBILITY ====================
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
